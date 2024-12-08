@@ -1,16 +1,17 @@
 // let userInput = parseInt(prompt("Enter a number: "));
 let humanScore = 0;
 let computerScore = 0;
-let i = 0
-while (i < 5) {
-
+let round = 1;
+while (round < 6) {
+    console.log(" ");
+    console.log(`Round: ${round}`);
     function getComputerChoice(rock, paper, scissor) {
-        let computerDecision = Math.floor(Math.random() * 3);
+        let computerDecision = Math.floor(Math.random() * 7);
     
-        if(computerDecision === 1) {
+        if(computerDecision === 1 || computerDecision === 3) {
             return rock = "rock";
         }
-        else if(computerDecision === 2) {
+        else if(computerDecision === 2 || computerDecision === 4) {
             return paper = "paper";
         }
         else {
@@ -67,14 +68,29 @@ while (i < 5) {
         }
     
     }
+    function playGame() {
+        if (humanScore > computerScore) {
+            result = "Congrats You win!";
+        }
+        else if (humanScore < computerScore) {
+            result = "You lose better luck next time!!";
+        }
+        else {
+            result = "Tie score try again!";
+        }
+        console.log("");
+        console.log(`Human Total Score: ${humanScore}`);
+        console.log(`Computer Total Score: ${computerScore}`);
+        console.log(result);
+    }
     
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
     console.log(`You: ${humanSelection} \nComputer: ${computerSelection}`);
     playRound(humanSelection, computerSelection);
-    i++;
+    round++;
 }
-console.log("");
-console.log(`Human Total Score: ${humanScore}`);
-console.log(`Computer Total Score: ${computerScore}`);
+
+playGame();
+
 
